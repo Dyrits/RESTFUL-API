@@ -1,14 +1,14 @@
 var express = require('express');
 var router = express.Router();
 
-let { getIndex, examples } = require("../controllers/index");
+let { render, json } = require("../controllers/index");
 
 
-router.get('/', getIndex);
-router.get('/example', examples.HTML.get);
-router.get('/example/request', examples.requests.get);
-router.post('/example/request', examples.requests.post);
-router.put('/example/request', examples.requests.put);
-router.delete('/example/request', examples.requests.delete);
+router.get('/', render.index);
+router.get('/example', render.example);
+router.get('/example/request', json.example.get);
+router.post('/example/request', json.example.post);
+router.put('/example/request', json.example.put);
+router.delete('/example/request', json.example.delete);
 
 module.exports = router;
