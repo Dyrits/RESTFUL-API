@@ -6,6 +6,8 @@ let { render, json } = require("../controllers/index");
 
 router.get('/', render.index);
 router.get('/example', render.example);
+router.get('/restful', render.restful);
+router.get('/status-codes', render.statusCodes);
 router.get('/example/request', json.example.get);
 router.post('/example/request', json.example.post);
 router.put('/example/request', json.example.put);
