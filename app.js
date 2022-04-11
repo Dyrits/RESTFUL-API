@@ -1,14 +1,15 @@
-var createError = require('http-errors');
-var express = require('express');
-var methodOverride = require('method-override')
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const methodOverride = require('method-override');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 
-require('./mvc/models/db');
-var indexRouter = require('./mvc/routes/index');
+require('./api/models/db');
+const indexRouter = require('./mvc/routes/index');
+const apiRouter = require('./api/routes/index');
 
-var app = express();
+const app = express();
 
 app.use(methodOverride("_method"));
 
@@ -28,6 +29,7 @@ app.use((req, res, next) => {
 })
 
 app.use('/', indexRouter);
+app.use('/api', apiRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
