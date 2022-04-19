@@ -6,8 +6,12 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
 require('./api/models/db');
-const indexRouter = require('./mvc/routes/index');
-const apiRouter = require('./api/routes/index');
+
+const routers = {
+    index: require('./mvc/routes/index'),
+    api: require('./api/routes/index'),
+    countries: require('./mvc/routes/countries')
+}
 
 const app = express();
 
@@ -28,8 +32,9 @@ app.use((req, res, next) => {
     next();
 })
 
-app.use('/', indexRouter);
-app.use('/api', apiRouter);
+app.use('/', routers.index);
+app.use('/api', routers.api);
+app.use('/countries', routers.countries);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
