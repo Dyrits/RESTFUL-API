@@ -9,7 +9,7 @@ require('./api/models/db');
 
 const routers = {
     index: require('./mvc/routes/index'),
-    api: require('./api/routes/index'),
+    api: require('./api/routes/countries'),
     countries: require('./mvc/routes/countries')
 }
 
@@ -35,6 +35,7 @@ app.use((req, res, next) => {
 app.use('/', routers.index);
 app.use('/api', routers.api);
 app.use('/countries', routers.countries);
+app.use('*', (req, res, next) => { res.render("error", { title: "Error 404", message: "Page not found",  status:  404, }); });
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -42,14 +43,12 @@ app.use(function (req, res, next) {
 });
 
 // error handler
-app.use(function (err, req, res, next) {
+app.use(function (error, req, res, next) {
     // set locals, only providing error in development
-    res.locals.message = err.message;
-    res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-    // render the error page
-    res.status(err.status || 500);
-    res.render('error');
+    const { message, status } = error;
+    res.status(status || 500);
+    res.render('error', { title : "Error", message : message || "An unknown error occurred.", status: status || 500 });
 });
+
 
 module.exports = app;
