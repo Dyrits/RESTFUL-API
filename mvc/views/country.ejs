@@ -1,0 +1,12 @@
+<%- include('partials/header.ejs'); %>
+
+<h1><%= country.name %></h1>
+
+<a href="/api/countries/<%= country.identifier %>/edit" class="btn" >Edit</a>
+
+<form class="inline" action="/countries/<%= country.identifier %>?_method=DELETE" method="post">
+    <input class="btn" type="submit" value="Delete">
+</form>
+
+
+<%- include('partials/footer.ejs'); %>

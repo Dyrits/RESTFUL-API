@@ -1,0 +1,20 @@
+<%- include('partials/header.ejs'); %>
+<% const { countries } = locals; %>
+
+<h1><%= title %></h1>
+
+<h5><a href="api/countries/new">Add Country to API</a></h5>
+
+<% if(!countries || !countries.length) { %>
+    <h2 style="font-weight: 300; margin-top: 88px;">No countries to show</h2>
+    <a href="/">Home</a>
+<% } else { %>
+    <ul class="list">
+        <% for(let country of countries) { %>
+            <li><a href="/countries/<%= country.identifier %>"><%= country.name %></a></li>
+        <% } %>
+    </ul>
+<% } %>
+
+
+<%- include('partials/footer.ejs'); %>
