@@ -1,7 +1,7 @@
 const request = require('request');
 const {isReadStream} = require("request/lib/helpers");
 
-const domain = process.env.NODE_ENV === "production" ? "https://mighty-mountain-94469.herokuapp.com/" : "http://localhost:3000/";
+const domain = process.env.NODE_ENV === "production" ? process.env.APP_URL : "http://localhost:3000/";
 
 const render = {
     countries: {
