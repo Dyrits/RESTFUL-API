@@ -27,6 +27,11 @@ app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use("/", (req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    next();
+});
+
 app.use((req, res, next) => {
     res.$json = (status, data) => { res.status(status).json({...data, status}); }
     next();
