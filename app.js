@@ -32,10 +32,10 @@ app.use((req, res, next) => {
     next();
 })
 
-app.use('/', routers.index);
-app.use('/api', routers.api);
-app.use('/countries', routers.countries);
-app.use('*', (req, res, next) => { res.render("error", { title: "Error 404", message: "Page not found",  status:  404, }); });
+app.use("/", routers.index);
+app.use("/api", routers.api);
+app.use("/countries", routers.countries);
+app.use("*", (req, res, next) => { res.render("error", { title: "Error 404", message: "Page not found",  status:  404, }); });
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
