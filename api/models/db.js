@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 let uri = 'mongodb://localhost/country_data';
 
-if (process.env.NODE_ENV === 'PRODUCTION') {
+if (process.env.NODE_ENV === 'production') {
     uri = process.env.MONGODB_URI;
 }
 
