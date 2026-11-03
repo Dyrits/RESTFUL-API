@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.set('useCreateIndex', true);
+
 
 const countrySchema = new mongoose.Schema({
     name: {
